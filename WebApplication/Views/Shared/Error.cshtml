@@ -1,0 +1,49 @@
+﻿@model ErrorViewModel
+
+@{
+    ViewBag.Title = "Ошибка";
+}
+
+<div id="wrapper" class="container-fluid mb-5">
+    <div class="error-box">
+        <div class="error-body text-center">
+
+            @if (Model.RequestId != null)
+            {
+                <h1 class="text-danger">@Model.RequestId</h1>
+            }
+            else
+            {
+                <h1 class="text-danger">500</h1>
+            }
+
+            @if (@Model.RequestId == "404" && (@Model.ErrorInfo == "" || @Model.ErrorInfo == null))
+            {
+                <h3>Страница Не Найдена!</h3>
+                <p class="text-muted m-t-30 m-b-30">СКОРЕЕ ВСЕГО, СТРАНИЦА, КОТОРУЮ ВЫ ИЩЕТЕ, ТАМ</p>
+            }
+            else @if (@Model.RequestId == "400" && (@Model.ErrorInfo == "" || @Model.ErrorInfo == null))
+            {
+                <h3>Плохая Связь!</h3>
+                <p class="text-muted m-t-30 m-b-30">
+                    ОБНОВИТЕ И ПОПРОБУЙТЕ ЕЩЕ РАЗ
+                </p>
+            }
+            else if (Model.ErrorInfo == "" || Model.ErrorInfo == null)
+            {
+                <h3>
+                    ИЗВИНИТЕ, ПРОИЗОШЛА ОШИБКА
+                </h3>
+            }
+            else
+            {
+                <h3>
+                    @Model.ErrorInfo
+                </h3>
+            }
+
+            <br />
+            <a href="/" class="btn btn-danger btn-rounded m-b-40">Вернуться назад</a>
+        </div>
+    </div>
+</div>

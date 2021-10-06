@@ -1,0 +1,27 @@
+﻿@model WebApplication.Models.Account.ProfileVIewModel
+
+@{ 
+    ViewBag.Title = "Профиль";
+} 
+
+<div class="row mb-5">
+    <div class="col-12 shadow-lg p-0 bg-white" style="font-size: 1.2em;">
+        <div class="card">
+            <div class="card-header">
+                <h3>Профиль</h3>
+            </div>
+            <div class="card-body">
+
+                <div class="container">
+                    <p><span class="profileInfo">Имя: </span>@Model.Firstname</p>
+                    <p><span class="profileInfo">Фамилия:</span> @Model.Lastname</p>
+                    <p><span class="profileInfo">Отчество: </span>@Model.Patronymic</p>
+                    <p><span class="profileInfo">Электронная почта: </span>@Model.Email</p>
+                    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="Edit">Редактировать</a>
+                    <a class="btn btn-sm btn-primary" asp-controller="Account" asp-action="ChangePassword">Поменять пароль</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

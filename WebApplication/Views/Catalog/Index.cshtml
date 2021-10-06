@@ -1,0 +1,107 @@
+﻿@model WebApplication.Models.Catalog.CatalogdProviderIdViewModel
+
+@{ ViewBag.Title = "Каталог"; }
+
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Каталог @ViewData["NameProvider"]</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    <form method="get">
+                        <input type="hidden" name="providerId" value="@Model.ProviderId" />
+                        <div class="form-inline form-group">
+                            <label class="mr-1" asp-for="SearchSelectionString">Поиск по: </label>
+                            <select class="mr-1" style="height: 1.8em;" name="searchSelectionString" asp-items="Model.SearchSelection" asp-for="SearchSelectionString"></select>
+                            <label class="mr-1" asp-for="SearchString">Значение: </label>
+                            <input class="mr-1" name="searchString" asp-for="SearchString" />
+                            <input class="btn btn-sm btn-primary mr-1" type="submit" value="Поиск" />
+                            <a class="btn btn-sm btn-danger mr-1" asp-action="Index" asp-route-providerId="@Model.ProviderId">Обновить</a>
+                            <a class="btn btn-sm btn-warning mr-1" asp-action="Index" asp-controller="Provider" asp-route-providerId="@Model.ProviderId"
+                               asp-route-menuId="@Model.MenuId"
+                               asp-route-searchSelectionString="@Model.SearchSelectionString"
+                               asp-route-searchString="@Model.SearchString"
+                               asp-route-sortCatalog="@ViewBag.NameSort">Назад</a>
+
+                            @if (User.IsInRole("admin"))
+                            {
+                                <a class="btn btn-sm btn-success mr-1" asp-controller="Catalog" asp-action="Add" 
+                                   asp-route-providerId="@Model.ProviderId"
+                                   asp-route-menuId="@Model.MenuId"
+                                   asp-route-searchSelectionString="@Model.SearchSelectionString"
+                                   asp-route-searchString="@Model.SearchString"
+                                   asp-route-sortCatalog="@ViewBag.NameSort">Добавить каталог
+                                </a>
+                            }
+
+                        </div>
+                    </form>
+
+                    @if (Model.Catalogs.Any())
+                    {
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    <a asp-action="Index" asp-route-providerId="@Model.ProviderId"
+                                       asp-route-menuId="@Model.MenuId"
+                                       asp-route-searchSelectionString="@Model.SearchSelectionString"
+                                       asp-route-searchString="@Model.SearchString"
+                                       asp-route-sortCatalog="@ViewBag.NameSort">
+                                        Каталог
+                                    </a>
+                                </th>
+                                <th>Информация</th>
+                                <th></th>
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <th></th>
+                                }
+                            </tr>
+
+                            @foreach (var catalog in Model.Catalogs)
+                            {
+                                <tr>
+                                    <td>@catalog.Name</td>
+                                    <td>@catalog.Info</td>
+                                    <td><a class="btn btn-sm btn-primary" asp-controller="Dish" asp-action="Index" asp-route-catalogId="@catalog.Id" asp-route-menuId="@Model.MenuId">Блюда</a></td>
+                                    @if (User.IsInRole("admin"))
+                                    {
+                                        <td>
+                                            <form asp-action="Delete" 
+                                                  asp-route-id="@catalog.Id"
+                                                  asp-route-providerId="@Model.ProviderId"
+                                                  asp-route-menuId="@Model.MenuId"
+                                                  asp-route-searchSelectionString="@Model.SearchSelectionString"
+                                                  asp-route-searchString="@Model.SearchString"
+                                                  asp-route-sortCatalog="@ViewBag.NameSort"
+                                                  method="post">
+                                                <input type="hidden" name="providerId" value="@Model.ProviderId" />
+                                                <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@catalog.Id"
+                                                   asp-route-providerId="@Model.ProviderId"
+                                                   asp-route-menuId="@Model.MenuId"
+                                                   asp-route-searchSelectionString="@Model.SearchSelectionString"
+                                                   asp-route-searchString="@Model.SearchString"
+                                                   asp-route-sortCatalog="@ViewBag.NameSort">Редактировать</a>
+                                                <button onclick="if (!confirm('Вы уверены, что хотите удалить этот элемент?')) { return false }" type="submit" class="btn btn-sm btn-danger">
+                                                    Удалить
+                                                </button>
+                                            </form>
+                                        </td>
+                                    }
+                                </tr>
+                            }
+                        </table> }
+                    else
+                    {
+                        <h2 class="text-center text-danger">
+                            Пусто
+                        </h2>}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebApplication.Models.Cart.CartDishesViewModel>
+
+@{ ViewBag.Title = "Корзина"; }
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Корзина</h3>
+            </div>
+            <div class="card-body">
+
+                <div class="container">
+
+                    @if (Model.Any())
+                    {<h6 class="text-center">
+                            Обновите количество каждого блюда
+                        </h6>
+                        <br />
+
+
+                        <table class="table center">
+                            <tr>
+                                <th>Блюдо</th>
+                                <th>Имя</th>
+                                <th>Информация</th>
+                                <th>Вес</th>
+                                <th>Цена за один (руб.)</th>
+                                <th>Сумма</th>
+                                <th>Цена за количество</th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var cartD in Model)
+                            {
+                                <tr>
+                                    <td> <img style="width: 60px; height: 60px;" src="@cartD.Path" /></td>
+                                    <td>@cartD.Name</td>
+                                    <td>@cartD.Info</td>
+                                    <td>@cartD.Weight</td>
+                                    <td>@cartD.Price</td>
+                                    <td>
+                                        <form method="post" asp-controller="Cart" asp-action="Update">
+                                            <input type="hidden" name="dishCartId" value="@cartD.Id" />
+                                            <input type="number" min="1" value="@cartD.Count" name="count" />
+                                            <input type="submit" value="Обновить" class="btn btn-sm btn-primary text-center mt-2" style="margin-left: 20%;" />
+                                        </form>
+                                    </td>
+
+                                    <td>@Math.Round(cartD.Count * cartD.Price, 2).ToString("N2") $</td>
+                                    <td>
+                                        <form method="post" asp-action="Delete" asp-route-cartDishId="@cartD.Id">
+                                            <div asp-validation-summary="All" class="text-danger"></div>
+                                            <button onclick="if (!confirm('Вы уверены, что хотите удалить этот элемент?')) { return false }" class="btn btn-sm btn-danger">
+                                                Удалить
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </table>
+
+                        <br class="col-10" />
+
+                        <div>
+                            <form method="post" asp-controller="Cart" asp-action="DeleteAll">
+                                <div asp-validation-summary="All" class="text-danger"></div>
+                                <button onclick="if (!confirm('Вы уверены, что хотите удалить эти элементы?')) { return false }" class="btn btn-sm btn-danger">
+                                    Пустая корзина
+                                </button>
+                                <button class="btn btn-sm btn-success" asp-controller="Order" asp-action="Create" type="submit">
+                                    Заказать
+                                </button>
+                                <a class="btn btn-sm btn-warning" asp-controller="Provider" asp-action="Index">  Вернуться к доставщикам</a>
+
+                                <h3 class="float-right">Итоговая цена: <span class="text-danger">@ViewData["FullPrice"].ToString()</span> руб.</h3>
+                            </form>
+                        </div> }
+                    else
+                    {
+                        <h2 class="text-center text-danger">
+                            Корзина пуста
+                        </h2><br/>
+                             <h3 class="text-center text-info">
+                                 <a asp-action="Index" asp-controller="Provider">Доставщики</a>
+                             </h3>
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

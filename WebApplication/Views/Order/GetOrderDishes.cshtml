@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication.Models.Order.OrderDishesViewModel>
+
+@{ ViewBag.Title = "Заказанная еда"; }
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Заказанная еда</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+                    @if (Model.Any())
+                    {
+                        <table class="table">
+                            <tr>
+                                <th>Блюдо</th>
+                                <th>Имя</th>
+                                <th>Информация</th>
+                                <th>Вес</th>
+                                <th>Цена</th>
+                                <th>Сумма</th>
+                                <th>
+                                    Итоговая цена
+                                </th>
+                            </tr>
+
+                            @foreach (var cartD in Model)
+                            {
+                                <tr>
+                                    <td> <img style="width:60px; height: 60px;" src="@cartD.Path" alt="@cartD.Name" /></td>
+                                    <td>@cartD.Name</td>
+                                    <td>@cartD.Info</td>
+                                    <td>@cartD.Weight</td>
+                                    <td>@cartD.Price Текущая</td>
+                                    <td>@cartD.Count</td>
+
+                                    <td>@Math.Round(cartD.Count * cartD.Price, 2).ToString("N2") руб.</td>
+                                </tr>
+                            }
+                        </table>
+                        <br />
+
+                        <div class="float-right">
+                            <span class="text-danger" style="font-size: 1.7em; font-weight: 700;">Итоговая цена: @ViewData["FullPrice"] руб.</span>
+                        </div>
+                        <br /> }
+                    else
+                    {
+                        <h2 class="text-center text-danger">
+                            Заказ пуст
+                        </h2>
+                        <h3 class="text-center text-info">
+                            <a asp-action="Index" asp-controller="Order">К заказам</a>
+                        </h3>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

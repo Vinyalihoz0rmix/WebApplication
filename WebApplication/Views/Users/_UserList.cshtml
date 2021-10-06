@@ -1,0 +1,20 @@
+﻿@model WebApplication.Models.Users.UserViewModel
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Email</td>
+    <td>@Model.FLP</td>
+    <td class="text-right">
+        <div class="btn-group-vertical" rold="group">
+            <form asp-action="Delete" asp-route-id="@Model.Id" asp-route-searchSelectionString="@ViewData["SearchSelectionString"]" asp-route-searchString="@ViewData["SearchString"]" method="post">
+                <a class="btn btn-sm btn-primary rounded-0" title="Редактировать" asp-action="Edit" asp-route-id="@Model.Id" asp-route-searchSelectionString="@ViewData["SearchSelectionString"]" asp-route-searchString="@ViewData["SearchString"]"><i style="width: 1.2em; height:1.2em;" class="fas fa-edit"></i></a>
+                <a class="btn btn-sm btn-primary rounded-0" title="Поменять пароль" asp-controller="Users" asp-action="ChangePassword" asp-route-id="@Model.Id" asp-route-searchSelectionString="@ViewData["SearchSelectionString"]" asp-route-searchString="@ViewData["SearchString"]"><i style="width: 1.2em; height:1.2em;" class="fas fa-key"></i></a>
+                <a class="btn btn-sm btn-primary rounded-0" title="Управление ролями" asp-controller="Roles" asp-action="Edit" asp-route-userid="@Model.Id" asp-route-searchSelectionString="@ViewData["SearchSelectionString"]" asp-route-searchString="@ViewData["SearchString"]"><i style="width: 1.2em; height:1.2em;" class="fas fa-user-tag"></i></a>
+                <button onclick="if (!confirm('Вы уверены, что хотите удалить этот элемент?')) { return false }" class="btn btn-sm btn-danger rounded-0" title="Удалить" type="submit">
+                    <i style="width: 1.2em; height:1.2em;" class="fas fa-trash-alt"></i>
+                </button>
+            </form>
+        </div>
+    </td>
+</tr> 
+

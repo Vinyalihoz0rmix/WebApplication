@@ -1,0 +1,164 @@
+﻿@{ ViewBag.Title = "Отчёт"; }
+
+<div class="row mb-5">
+
+    <div class="col-12 shadow-lg p-0 bg-white">
+        <div class="card">
+            <div class="card-header">
+                <h3>Отчёт</h3>
+            </div>
+            <div class="card-body">
+                <div class="container">
+
+                    <div>
+                        <h3 class="text-center">Отчет поставщика</h3>
+                        <div class="container">
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportProvider">
+                                <h5>За всё время</h5>
+                                <div class="container">
+                                    <label>Идентификатор поставщика: </label>
+                                    <input style="margin-top: -5px;" type="number" name="providerId" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportProvider">
+                                <h5>За день</h5>
+                                <div class="container">
+
+                                    <label>Идентификатор поставщика: </label>
+                                    <input type="number" name="providerId" />
+                                    <label>Дата: </label>
+                                    <input type="date" name="dateWith" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportProvider">
+                                <h5>За определённое время</h5>
+                                <div class="container">
+
+                                    <label>Идентификатор поставщика: </label>
+                                    <input type="number" name="providerId" />
+                                    <label>Дата от: </label>
+                                    <input type="date" name="dateWith" />
+                                    <label>Дата по: </label>
+                                    <input type="date" name="dateTo" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportProviders">
+                                <h5>Для всех доставщиков за всё время</h5>
+                                <div class="container">
+
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportProviders">
+                                <h5>Для всех доставщиков за день</h5>
+                                <div class="container">
+
+                                    <label>Дата: </label>
+                                    <input type="date" name="dateWith" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportProviders">
+                                <h5>Для всех доставщиков за определенное время</h5>
+                                <div class="container">
+
+                                    <label>Дата от: </label>
+                                    <input type="date" name="dateWith" />
+                                    <label>Дата по: </label>
+                                    <input type="date" name="dateTo" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div>
+                        <h3 class="text-center">Отчет пользователей</h3>
+                        <div class="container">
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportUser">
+                                <h5>За всё время</h5>
+                                <div class="container">
+
+                                    <label>Идентификатор пользователя: </label>
+                                    <input type="text" style="width:310px" name="userId" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportUser">
+                                <h5>За день</h5>
+                                <div class="container">
+
+                                    <label>Идентификатор пользователя: </label>
+                                    <input type="text" style="width:310px" name="userId" />
+                                    <label>Дата: </label>
+                                    <input type="date" name="dateWith" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportUser">
+                                <h5>За определённое время</h5>
+                                <div class="container">
+
+                                    <label>Идентификатор пользователя: </label>
+                                    <input type="text" style="width:310px" name="userId" />
+                                    <label>Дата от: </label>
+                                    <input type="date" name="dateWith" />
+                                    <label>Дата по: </label>
+                                    <input type="date" name="dateTo" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportUsers">
+                                <h5>Для всех пользователей за всё время</h5>
+                                <div class="container">
+
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportUsers">
+                                <h5>Для всех пользователей за день</h5>
+                                <div class="container">
+
+                                    <label>Дата: </label>
+                                    <input type="date" name="dateWith" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                            <form method="post" asp-controller="Report" asp-action="GetReportUsers">
+                                <h5>Для всех пользователей за определенное время</h5>
+                                <div class="container">
+
+                                    <label>Дата от: </label>
+                                    <input type="date" name="dateWith" />
+                                    <label>Дата по: </label>
+                                    <input type="date" name="dateTo" />
+                                    <input class="btn btn-sm btn-success mb-1" type="submit" value="Составить" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 

@@ -1,0 +1,18 @@
+﻿@model WebApplication.Models.Provider.ListProviderViewModel
+
+@{ 
+    ViewBag.Title = "Заказать Еду";
+} 
+
+<div class="text-center">
+    <h1 style="margin-top: -3%;">Заказать еду</h1>
+</div>
+<br/>
+<div class="row mb-5">
+    @{ 
+        foreach (WebApplication.Models.Provider.ProviderViewModel provider in Model.Providers)
+        {
+            @await Html.PartialAsync("_ProvidersList", provider)
+        }
+    }
+</div>

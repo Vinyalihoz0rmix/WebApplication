@@ -1,0 +1,32 @@
+﻿@model WebApplication.Models.Provider.ProviderListViewModel
+
+@{
+    ViewBag.Title = "Поставщики";
+}
+
+<div class="text-center">
+    <h1 style="margin-top: -3%;">Поставщики</h1>
+</div>
+
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="mr-1" asp-for="SearchSelectionString">Поиск по: </label>
+        <select class="mr-1" style="height: 1.8em;" name="searchSelectionString" asp-items="Model.SearchSelection" asp-for="SearchSelectionString"></select>
+        <label class="mr-1" asp-for="SearchString">Значение: </label>
+        <input class="mr-1" name="searchString" asp-for="SearchString" />
+        <input class="btn btn-sm btn-primary mr-1" type="submit" value="Поиск" />
+        <a class="btn btn-sm btn-danger mr-1" asp-action="Index">Обновить</a>
+        @if (User.IsInRole("admin"))
+        {
+            <a class="btn btn-sm btn-success mr-1" asp-controller="Provider" asp-action="Add" asp-route-searchSelectionString="@Model.SearchSelectionString" asp-route-searchString="@Model.SearchString">Добавить доставщика</a>
+        }
+    </div>
+</form>
+
+<div class="row mb-5">
+    @{ foreach (WebApplication.Models.Provider.ProviderViewModel provider in Model.ListProviders.Providers)
+        {
+            @await Html.PartialAsync("_ProvidersList", provider, new ViewDataDictionary(this.ViewData) {
+                       { "SearchSelectionString", Model.SearchSelectionString },
+                        { "SearchString", Model.SearchString }}) } }
+</div>

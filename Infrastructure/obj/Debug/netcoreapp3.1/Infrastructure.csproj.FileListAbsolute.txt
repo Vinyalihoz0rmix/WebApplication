@@ -1,0 +1,15 @@
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.deps.json
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.runtimeconfig.json
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.runtimeconfig.dev.json
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Core.dll
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\bin\Debug\netcoreapp3.1\Core.pdb
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.AssemblyReference.cache
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.AssemblyInfo.cs
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.csproj.CopyComplete
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.dll
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.pdb
+C:\Users\yuriy\OneDrive\Desktop\Учёба\Работа\WebApplication\Infrastructure\obj\Debug\netcoreapp3.1\Infrastructure.genruntimeconfig.cache
